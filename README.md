@@ -63,6 +63,15 @@ Each participant's progress is logged - check their contribution in the dashboar
 - Minimum 80GB RAM per GPU (e.g. a 2-GPU machine needs 160GB total)
 - Minimum 80GB disk space
 
+### Supported GPUs
+
+Meeting the minimum VRAM requirement above is necessary but not sufficient: the authorization service maintains an allowlist of validated GPU models, so a GPU with 24 GB+ VRAM may still be rejected if its model has not been validated yet. If your GPU is rejected with `GPU device not in allowlist: '<model>'`, please open an issue requesting it be added, and include:
+
+- GPU model (e.g. the output of `nvidia-smi --query-gpu=name --format=csv,noheader`)
+- VRAM size
+- Host RAM
+- OS, and instance type if running on a cloud provider
+
 ### Operating System Requirements
 
 - Linux
@@ -310,6 +319,10 @@ sudo chown -R <linux_user> <path/to/project>
 - **`GPU is not eligible (GPU VRAM: X GB).`**
 
     The GPU does not meet the minimum VRAM requirement. A GPU with at least 24 GB VRAM is required.
+
+- **`GPU device not in allowlist: '<model>'`**
+
+    The GPU meets the minimum VRAM requirement but its model is not yet on the validated GPU allowlist. See [Supported GPUs](#supported-gpus) for how to request that your model be added.
 
 ### Authorization
 

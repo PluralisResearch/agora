@@ -30,6 +30,9 @@ Before a machine can join Agora, it must meet a set of minimum requirements. The
 !!! info "Maximum 2 peers per account"
     Scores sum across all peers running under the same HuggingFace identity, up to **2 active peers per account**. We may relax this cap during the live run.
 
+!!! warning "GPU model must be on the validated allowlist"
+    Meeting the 24 GB VRAM minimum is necessary but not sufficient: the authorization service maintains an allowlist of validated GPU models. If your GPU is rejected with `GPU device not in allowlist: '<model>'`, [open an issue](https://github.com/PluralisResearch/agora/issues) with the GPU model (from `nvidia-smi --query-gpu=name --format=csv,noheader`), VRAM, host RAM, OS, and cloud instance type if applicable.
+
 Check your GPU is visible:
 
 ```bash
