@@ -5,7 +5,7 @@ requires-python = ">=3.11,<3.12"
 dependencies = [
     "PyYAML",
     "prometheus_client",
-    "torch==2.7.0",
+    "torch==2.13.0",
     "numpy>=1.17,<2.4",
     "scipy>=1.2.1",
     "prefetch_generator>=1.0.1",
