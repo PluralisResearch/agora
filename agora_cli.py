@@ -29,6 +29,7 @@ import argparse
 import json
 import os
 import re
+import shlex
 import shutil
 import signal
 import subprocess
@@ -776,7 +777,7 @@ def _start_docker(config: dict, server_args: list, skip_input: bool = False):
         subprocess.run(["docker", "stop", container_name], capture_output=True, timeout=30)
         subprocess.run(["docker", "rm", container_name], capture_output=True, timeout=10)
 
-    inner_cmd = f"CUDA_VISIBLE_DEVICES=0 python3.11 {DOCKER_SERVER_PATH} {' '.join(server_args)} > agora_output_gpu{gpu_id}.log 2>&1"
+    inner_cmd = f"CUDA_VISIBLE_DEVICES=0 python3.11 {DOCKER_SERVER_PATH} {shlex.join(server_args)} > agora_output_gpu{gpu_id}.log 2>&1"
 
     docker_cmd = [
         "docker",
